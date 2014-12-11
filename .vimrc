@@ -1,4 +1,4 @@
-" This is Gary Bernhardt's .vimrc file
+" This is Patrick Ma's .vimrc file inspired by Gary Bernhardt
 " vim:set ts=2 sts=2 sw=2 expandtab:
 
 autocmd!
@@ -479,42 +479,17 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta Mappings
+" CtrlP Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
 
-function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
-endfunction
-
-nnoremap <leader>f :call SelectaFile(".")<cr>
-nnoremap <leader>gv :call SelectaFile("app/views")<cr>
-nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
-nnoremap <leader>gm :call SelectaFile("app/models")<cr>
-nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
-nnoremap <leader>gl :call SelectaFile("lib")<cr>
-nnoremap <leader>gp :call SelectaFile("public")<cr>
-nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
-nnoremap <leader>gf :call SelectaFile("features")<cr>
-
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>gv :CtrlP app/views<cr>
+nnoremap <leader>gc :CtrlP app/controllers<cr>
+nnoremap <leader>gm :CtrlP app/models<cr>
+nnoremap <leader>gh :CtrlP app/helpers<cr>
+nnoremap <leader>gl :CtrlP lib<cr>
+nnoremap <leader>gp :CtrlP public<cr>
+nnoremap <leader>gs :CtrlP public/stylesheets<cr>
+nnoremap <leader>gf :CtrlP features<cr>
