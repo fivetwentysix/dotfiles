@@ -14,6 +14,7 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
+set number
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -142,18 +143,7 @@ imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
-" Close all other windows, open a vertical split, and open this file's test
-" alternate in it.
-nnoremap <leader>s :call FocusOnFile()<cr>
-function! FocusOnFile()
-  tabnew %
-  normal! v
-  normal! l
-  call OpenTestAlternate()
-  normal! h
-endfunction
-" Reload in chrome
-map <leader>l :w\|:silent !reload-chrome<cr>
+nnoremap <leader>s :w<cr>
 " Align selected lines
 vnoremap <leader>ib :!align<cr>
 
@@ -310,7 +300,7 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
-  nnoremap <cr> :call RunTestFile()<cr>
+  nnoremap <cr> :w<cr>:call RunTestFile()<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
@@ -478,7 +468,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>f :CtrlP .<cr>
 nnoremap <leader>gv :CtrlP app/views<cr>
 nnoremap <leader>gc :CtrlP app/controllers<cr>
 nnoremap <leader>gm :CtrlP app/models<cr>
@@ -486,3 +476,5 @@ nnoremap <leader>gh :CtrlP app/helpers<cr>
 nnoremap <leader>gl :CtrlP lib<cr>
 nnoremap <leader>gp :CtrlP public<cr>
 nnoremap <leader>gs :CtrlP public/stylesheets<cr>
+
+au BufReadPost *.html set syntax=mustache
