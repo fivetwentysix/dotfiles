@@ -468,13 +468,13 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-nnoremap <leader>f :CtrlP .<cr>
-nnoremap <leader>gv :CtrlP app/views<cr>
-nnoremap <leader>gc :CtrlP app/controllers<cr>
-nnoremap <leader>gm :CtrlP app/models<cr>
-nnoremap <leader>gh :CtrlP app/helpers<cr>
-nnoremap <leader>gl :CtrlP lib<cr>
-nnoremap <leader>gp :CtrlP public<cr>
-nnoremap <leader>gs :CtrlP public/stylesheets<cr>
+nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
+nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
+nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
+nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
+nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
+nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
+nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
+nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP public/stylesheets<cr>
 
-au BufReadPost *.html set syntax=mustache
+au BufReadPost,BufNewFile *.html set syntax=mustache
