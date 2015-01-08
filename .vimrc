@@ -469,12 +469,15 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " command. See usage below.
 
 nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
+nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
+nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
 nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
 nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
 nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
 nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
 nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
 nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
-nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP public/stylesheets<cr>
+nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP app/assets/stylesheets<cr>
+nnoremap <leader>gj :CtrlPClearAllCaches<cr>:CtrlP app/assets/javascripts<cr>
 
 au BufReadPost,BufNewFile *.html set syntax=mustache
