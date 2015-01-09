@@ -480,4 +480,5 @@ nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
 nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP app/assets/stylesheets<cr>
 nnoremap <leader>gj :CtrlPClearAllCaches<cr>:CtrlP app/assets/javascripts<cr>
 
-au BufReadPost,BufNewFile *.html set syntax=mustache
+autocmd BufReadPost,BufNewFile *.html set syntax=mustache
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
