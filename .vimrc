@@ -121,8 +121,8 @@ augroup END
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256 " 256 colors
-:set background=dark
-:color grb256
+:set background=light
+:color grb
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -468,17 +468,19 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
-nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
-nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
-nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
-nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
-nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
-nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
-nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
-nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
-nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP app/assets/stylesheets<cr>
-nnoremap <leader>gj :CtrlPClearAllCaches<cr>:CtrlP app/assets/javascripts<cr>
+nnoremap <leader>f :FuzzyFinderFile<cr>
+" nnoremap <leader>f :FuzzyFinderFile<cr>:CtrlP .<cr>
+" nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
+" nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
+" nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
+" nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
+" nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
+" nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
+" nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
+" nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
+" nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP app/assets/stylesheets<cr>
+" nnoremap <leader>gj :CtrlPClearAllCaches<cr>:CtrlP app/assets/javascripts<cr>
 
 autocmd BufReadPost,BufNewFile *.html set syntax=mustache
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost .jshintrc set filetype=javascript
