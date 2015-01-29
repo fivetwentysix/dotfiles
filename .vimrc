@@ -470,8 +470,9 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 nnoremap <leader>f :FuzzyFinderFile<cr>
 " nnoremap <leader>f :FuzzyFinderFile<cr>:CtrlP .<cr>
+nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
+nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
 " nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
-" nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
 " nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
 " nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
 " nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
