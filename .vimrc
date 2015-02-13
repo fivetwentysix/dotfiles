@@ -463,24 +463,24 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP Mappings
+" CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-nnoremap <leader>f :FuzzyFinderFile<cr>
-" nnoremap <leader>f :FuzzyFinderFile<cr>:CtrlP .<cr>
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
+nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
+" nnoremap <leader>F :FuzzyFinderFile<cr>:CtrlP .<cr>
 nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
 nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
-" nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
-" nnoremap <leader>gv :CtrlPClearAllCaches<cr>:CtrlP app/views<cr>
-" nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
-" nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
-" nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
-" nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
-" nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
-" nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP app/assets/stylesheets<cr>
-" nnoremap <leader>gj :CtrlPClearAllCaches<cr>:CtrlP app/assets/javascripts<cr>
+nnoremap <leader>ge :CtrlPClearAllCaches<cr>:CtrlP app/templates<cr>
+nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
+nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
+nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
+nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
+nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
+nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP spec<cr>
 
 autocmd BufReadPost,BufNewFile *.html set syntax=mustache
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
