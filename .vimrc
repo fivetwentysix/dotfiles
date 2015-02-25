@@ -300,7 +300,8 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
-  nnoremap <cr> :w<cr>:call RunTestFile()<cr>
+  " nnoremap <cr> :w<cr>:call RunTestFile()<cr>
+  nnoremap <cr> :w<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
