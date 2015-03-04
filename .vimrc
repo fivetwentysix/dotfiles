@@ -300,7 +300,9 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
-  nnoremap <cr> :w<cr>:call RunTestFile()<cr>
+  nnoremap <cr> :w<cr>
+  " Replace with this if not autotesting using guard.
+  " nnoremap <cr> :w<cr>:call RunTestFile()<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
@@ -468,7 +470,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage)|(\.(swp|ico|git|svn))$'
 
 nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
 " nnoremap <leader>F :FuzzyFinderFile<cr>:CtrlP .<cr>
