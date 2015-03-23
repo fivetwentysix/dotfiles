@@ -469,7 +469,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage)|(\.(swp|ico|git|svn))$'
 
 nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
 " nnoremap <leader>F :FuzzyFinderFile<cr>:CtrlP .<cr>
@@ -482,6 +482,8 @@ nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
 nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
 nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
 nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP spec<cr>
+nnoremap <leader>kc :w<cr>:!kitchen converge<cr>
+nnoremap <leader>kv :w<cr>:!kitchen verify<cr>
 
 autocmd BufReadPost,BufNewFile *.html set syntax=mustache
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
