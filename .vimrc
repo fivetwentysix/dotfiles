@@ -301,7 +301,10 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
   " nnoremap <cr> :w<cr>:call RunTestFile()<cr>
-  nnoremap <cr> :w<cr>
+  nmap <cr> :w<cr>
+  au FileType go nmap <cr> :w<cr>:! go test<cr>
+  au FileType py nmap <cr> :w<cr>:! python %<cr>
+  au FileType rb nnoremap <cr> :w<cr>:call RunTestFile()<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
@@ -469,22 +472,45 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage|public\/assets|public\/spree|public\/system)|(\.(swp|ico|git|svn)|bundle)$'
 
-nnoremap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
-" nnoremap <leader>F :FuzzyFinderFile<cr>:CtrlP .<cr>
-nnoremap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
-nnoremap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
-nnoremap <leader>ge :CtrlPClearAllCaches<cr>:CtrlP app/templates<cr>
-nnoremap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
-nnoremap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
-nnoremap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
-nnoremap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
-nnoremap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
-nnoremap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP spec<cr>
-nnoremap <leader>kc :w<cr>:!kitchen converge<cr>
-nnoremap <leader>kv :w<cr>:!kitchen verify<cr>
+nmap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
+nmap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
+nmap <leader>gt :CtrlPClearAllCaches<cr>:CtrlP tests<cr>
+nmap <leader>ge :CtrlPClearAllCaches<cr>:CtrlP app/templates<cr>
+nmap <leader>gc :CtrlPClearAllCaches<cr>:CtrlP app/controllers<cr>
+nmap <leader>gm :CtrlPClearAllCaches<cr>:CtrlP app/models<cr>
+nmap <leader>gh :CtrlPClearAllCaches<cr>:CtrlP app/helpers<cr>
+nmap <leader>gl :CtrlPClearAllCaches<cr>:CtrlP lib<cr>
+nmap <leader>gp :CtrlPClearAllCaches<cr>:CtrlP public<cr>
+nmap <leader>gs :CtrlPClearAllCaches<cr>:CtrlP spec<cr>
+nmap <leader>kc :w<cr>:!kitchen converge<cr>
+nmap <leader>kv :w<cr>:!kitchen verify<cr>
 
 autocmd BufReadPost,BufNewFile *.html set syntax=mustache
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost .jshintrc set filetype=javascript
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GoLang
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage)
+
+autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
+autocmd FileType go nmap <Leader>gl :w<cr>:GoLint<cr>
+
+autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+autocmd FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+autocmd FileType go nmap <Leader>s <Plug>(go-implements)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+
+let g:go_fmt_command = "goimports"
