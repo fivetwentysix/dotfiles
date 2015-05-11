@@ -472,7 +472,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage|public\/assets|public\/spree|public\/system)|(\.(swp|ico|git|svn)|bundle)$'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage|public\/assets|public\/spree|public\/system|public\/uploads)|(\.(swp|ico|git|svn)|bundle)$'
 
 nmap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
 nmap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
