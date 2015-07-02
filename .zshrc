@@ -50,7 +50,6 @@ plugins=(git git vi-mode history-substring-search zsh-syntax-highighting)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -79,8 +78,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export GOROOT=$HOME/go
+#
 export GOPATH=$HOME/gocode
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:/usr/sbin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$GOROOT/bin:$GOPATH/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
 export EDITOR=vim
 set -o vi
+set editing-mode vi
+source $HOME/.profile
