@@ -80,7 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 export GOPATH=$HOME/gocode
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$GOROOT/bin:$GOPATH/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$GOROOT/bin:$GOPATH/bin:/usr/sbin:/sbin:$HOME/.rvm/bin:$HOME/bin
 export EDITOR=vim
 set -o vi
 set editing-mode vi
