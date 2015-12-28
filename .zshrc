@@ -46,7 +46,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git vi-mode history-substring-search zsh-syntax-highighting)
+plugins=(git git vi-mode history-substring-search zsh-syntax-highighting docker)
 
 # User configuration
 

@@ -91,7 +91,7 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,hbs,html.handlebars set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
@@ -302,9 +302,9 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 function! MapCR()
   nnoremap <cr> :w<cr>:call RunTestFile()<cr>
   " nmap <cr> :w<cr>
-  au FileType go nmap <cr> :w<cr>:! go test<cr>
-  au FileType py nmap <cr> :w<cr>:! python %<cr>
-  au FileType rb nnoremap <cr> :w<cr>:call RunTestFile()<cr>
+  " au FileType go nmap <cr> :w<cr>:! go test<cr>
+  " au FileType py nmap <cr> :w<cr>:! python %<cr>
+  " au FileType ruby nnoremap <cr> :w<cr>:call RunTestFile()<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
@@ -357,7 +357,7 @@ function! RunTests(filename)
       redraw!
     " Fall back to a blocking test run with Bundler
     elseif filereadable("Gemfile")
-        exec ":!rspec " . a:filename
+        exec ":!spring rspec " . a:filename
     " Fall back to a normal blocking test run
     else
         exec ":!rspec " . a:filename
@@ -472,7 +472,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage|public\/assets|public\/spree|public\/system|public\/uploads)|(\.(swp|ico|git|svn)|bundle)$'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|tmp|node_modules|target|dist|coverage|public\/assets|public\/spree|public\/system|public\/uploads)|(\.(swp|ico|git|svn)|bundle|cordova)$'
 
 nmap <leader>f :CtrlPClearAllCaches<cr>:CtrlP .<cr>
 nmap <leader>ga :CtrlPClearAllCaches<cr>:CtrlP app<cr>
