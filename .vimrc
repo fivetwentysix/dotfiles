@@ -300,8 +300,8 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
-  " nnoremap <cr> :w<cr>:call RunTestFile()<cr>
-  nmap <cr> :w<cr>
+  nnoremap <cr> :w<cr>:call RunTestFile()<cr>
+  " nmap <cr> :w<cr>
   au FileType go nmap <cr> :w<cr>:! go test<cr>
   au FileType py nmap <cr> :w<cr>:! python %<cr>
   au FileType rb nnoremap <cr> :w<cr>:call RunTestFile()<cr>
@@ -357,7 +357,7 @@ function! RunTests(filename)
       redraw!
     " Fall back to a blocking test run with Bundler
     elseif filereadable("Gemfile")
-        exec ":!bin/rspec " . a:filename
+        exec ":!rspec " . a:filename
     " Fall back to a normal blocking test run
     else
         exec ":!rspec " . a:filename
