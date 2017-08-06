@@ -3,7 +3,7 @@
 
 autocmd!
 
-call pathogen#incubate()
+execute pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -514,3 +514,7 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>e <Plug>(go-rename)
 
 let g:go_fmt_command = "goimports"
+let g:jsx_ext_required = 0
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
